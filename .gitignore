@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Datasets locais
+data/raw/*
+data/processed/*
+
+# Manter apenas as pastas no GitHub
+!data/raw/.gitkeep
+!data/processed/.gitkeep
