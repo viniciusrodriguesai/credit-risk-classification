@@ -72,11 +72,11 @@ Desenvolver e comparar uma Rede Neural e uma Árvore de Decisão para classifica
 - investigar valores ausentes, duplicatas e possíveis inconsistências;
 - tratar variáveis numéricas e categóricas;
 - criar atributos com interpretação financeira;
-- construir a matriz de características \(X\) e o vetor-alvo \(y\);
+- construir a matriz de características $X$ e o vetor-alvo $y$;
 - separar os dados em treinamento, validação e teste;
 - definir a arquitetura da Rede Neural;
 - justificar a arquitetura utilizando a dimensão VC e a Regra de Ouro;
-- calcular \(E_{in}\) e \(E_{out}\);
+- calcular $E_{in}$ e $E_{out}$;
 - identificar a ocorrência de overfitting;
 - justificar o número de épocas e o batch size;
 - construir uma Árvore de Decisão sem poda;
@@ -114,9 +114,9 @@ Cada linha representa uma solicitação de crédito e contém:
 - pontuações externas;
 - variável-alvo `TARGET`.
 
-A primeira versão completa do projeto será desenvolvida somente com esse arquivo.
+Na versão atual, este é o único arquivo obrigatório. O notebook realiza apenas o carregamento e a inspeção inicial dessa base.
 
-### Arquivos auxiliares
+### Arquivos auxiliares opcionais
 
 #### `bureau.csv`
 
@@ -134,7 +134,7 @@ Um mesmo cliente pode possuir várias solicitações anteriores. Por isso, essa 
 
 ### Ordem de utilização dos arquivos
 
-O projeto será desenvolvido em duas etapas:
+A utilização dos arquivos será feita em duas etapas:
 
 #### Etapa 1 — Modelo principal
 
@@ -187,11 +187,11 @@ Os datasets não são enviados ao GitHub. A pasta está configurada no `.gitigno
 
 ## Variável-alvo
 
-A variável-alvo \(y\) corresponde à coluna `TARGET`:
+A variável-alvo $y$ corresponde à coluna `TARGET`:
 
-\[
+$$
 y = \texttt{TARGET}
-\]
+$$
 
 Em que:
 
@@ -262,17 +262,17 @@ Nenhuma informação do conjunto de teste será utilizada para definir regras de
 
 Serão criados atributos com interpretação financeira, como:
 
-\[
+$$
 \text{Crédito/Renda}
 =
 \frac{\text{valor do crédito}}{\text{renda anual}}
-\]
+$$
 
-\[
+$$
 \text{Parcela/Renda}
 =
 \frac{\text{valor da parcela}}{\text{renda anual}}
-\]
+$$
 
 Outras possibilidades incluem:
 
@@ -285,19 +285,19 @@ Outras possibilidades incluem:
 
 Todos os atributos criados serão documentados no notebook.
 
-### 5. Construção de \(X\) e \(y\)
+### 5. Construção de $X$ e $y$
 
 A matriz de características será definida como:
 
-\[
+$$
 X = \text{informações do solicitante e da solicitação}
-\]
+$$
 
 O vetor-alvo será:
 
-\[
+$$
 y = \texttt{TARGET}
-\]
+$$
 
 As colunas `TARGET` e `SK_ID_CURR` não serão utilizadas como características preditivas.
 
@@ -394,7 +394,7 @@ Serão analisados:
 - número de folhas;
 - erro de treinamento;
 - erro de validação;
-- diferença entre \(E_{in}\) e \(E_{out}\);
+- diferença entre $E_{in}$ e $E_{out}$;
 - possível ocorrência de overfitting.
 
 Depois será aplicado o algoritmo de **Minimal Cost-Complexity Pruning**.
@@ -440,7 +440,7 @@ A comparação final considerará:
 
 - desempenho preditivo;
 - capacidade de generalização;
-- diferença entre \(E_{in}\) e \(E_{out}\);
+- diferença entre $E_{in}$ e $E_{out}$;
 - estabilidade;
 - complexidade;
 - interpretabilidade.
@@ -453,9 +453,9 @@ A comparação final considerará:
 credit-risk-classification/
 ├── data/
 │   ├── raw/
-│   │   ├── application_train.csv
-│   │   ├── bureau.csv
-│   │   └── previous_application.csv
+│   │   ├── application_train.csv  # arquivo local, não versionado
+│   │   ├── bureau.csv             # arquivo local, não versionado
+│   │   └── previous_application.csv # arquivo local, não versionado
 │   └── processed/
 ├── notebooks/
 │   └── credit_risk_classification.ipynb
@@ -524,12 +524,10 @@ Acesse:
 
 https://www.kaggle.com/competitions/home-credit-default-risk/data
 
-Baixe inicialmente:
+Baixe inicialmente apenas o arquivo obrigatório:
 
 ```text
 application_train.csv
-bureau.csv
-previous_application.csv
 ```
 
 Coloque os arquivos em:
@@ -544,7 +542,7 @@ O arquivo obrigatório para iniciar o projeto é:
 application_train.csv
 ```
 
-Os outros dois serão utilizados somente após a conclusão da primeira versão.
+`bureau.csv` e `previous_application.csv` são opcionais e serão utilizados somente em uma extensão posterior.
 
 ### 6. Abrir o notebook
 
@@ -579,20 +577,21 @@ O projeto está em desenvolvimento.
 - [x] configuração do `.gitignore`;
 - [x] criação do notebook;
 - [x] descrição do problema;
-- [x] descrição inicial do dataset.
+- [x] descrição inicial do dataset;
+- [x] carregamento inicial de `application_train.csv`;
+- [x] inspeção inicial da base e confirmação da coluna `TARGET`.
 
 ### Em desenvolvimento
 
-- [ ] carregamento completo dos dados;
-- [ ] análise exploratória;
+- [ ] análise exploratória avançada;
 - [ ] tratamento de valores ausentes;
 - [ ] engenharia de atributos;
-- [ ] construção de \(X\) e \(y\);
+- [ ] construção de $X$ e $y$;
 - [ ] separação de treinamento, validação e teste;
 - [ ] pré-processamento;
 - [ ] definição da arquitetura da Rede Neural;
 - [ ] treinamento da Rede Neural;
-- [ ] cálculo de \(E_{in}\) e \(E_{out}\);
+- [ ] cálculo de $E_{in}$ e $E_{out}$;
 - [ ] análise de overfitting;
 - [ ] treinamento da Árvore de Decisão;
 - [ ] seleção do `ccp_alpha`;
@@ -625,8 +624,8 @@ Serão apresentados:
 - precisão;
 - recall;
 - F1-score;
-- \(E_{in}\);
-- \(E_{out}\);
+- $E_{in}$;
+- $E_{out}$;
 - gráficos de treinamento;
 - análise de overfitting;
 - profundidade e quantidade de folhas da árvore;
