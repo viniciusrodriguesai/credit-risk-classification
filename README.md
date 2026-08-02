@@ -452,17 +452,14 @@ A comparação final considerará:
 ```text
 credit-risk-classification/
 ├── data/
-│   ├── raw/
-│   │   ├── application_train.csv  # arquivo local, não versionado
-│   │   ├── bureau.csv             # arquivo local, não versionado
-│   │   └── previous_application.csv # arquivo local, não versionado
-│   └── processed/
+│   └── raw/
+│       ├── application_train.csv  # arquivo local, não versionado
+│       ├── bureau.csv             # arquivo local, não versionado
+│       └── previous_application.csv # arquivo local, não versionado
 ├── notebooks/
 │   └── credit_risk_classification.ipynb
 ├── reports/
 │   └── figures/
-├── src/
-│   └── __init__.py
 ├── .gitignore
 ├── LICENSE
 ├── README.md
@@ -474,10 +471,8 @@ credit-risk-classification/
 | Caminho | Finalidade |
 |---|---|
 | `data/raw/` | Arquivos brutos, sem alterações |
-| `data/processed/` | Dados resultantes do pré-processamento |
 | `notebooks/` | Notebook principal do projeto |
 | `reports/figures/` | Gráficos utilizados no relatório |
-| `src/` | Código modular que poderá ser extraído do notebook |
 | `requirements.txt` | Dependências do ambiente Python |
 
 ---
