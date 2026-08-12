@@ -223,3 +223,9 @@ data/raw/*
 # Manter apenas as pastas no GitHub
 !data/raw/.gitkeep
 .ipynb_checkpoints/
+
+# opencode
+.opencode/
+
+# Artefatos gerados (submissoes)
+data/processed/

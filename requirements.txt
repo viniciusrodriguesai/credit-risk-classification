@@ -1,7 +1,8 @@
 pandas
 numpy
 matplotlib
-scikit-learn
+scipy
+scikit-learn>=1.2
 tensorflow
 jupyterlab
 ipykernel
