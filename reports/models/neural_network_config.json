@@ -1,0 +1,17 @@
+{
+  "hidden_neurons": 99,
+  "class_weight": {
+    "0": 0.54390792399434,
+    "1": 6.193733095471025
+  },
+  "batch_size": 256,
+  "selected_epoch": 7,
+  "classification_threshold": 0.5,
+  "number_of_parameters": 21385,
+  "p": 214,
+  "N": 215257,
+  "best_epoch": 7,
+  "E_in": 0.5373443961143494,
+  "E_val": 0.5495094060897827,
+  "E_out": 0.5502392510599454
+}
