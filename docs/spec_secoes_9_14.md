@@ -50,11 +50,70 @@ Fluxo validado: 7 (correções determinísticas + variantes + 9 atributos com `s
 - Métricas no teste interno: acurácia, precisão, recall (atenção à classe positiva), F1, matriz de confusão.
 - Matrizes de entrada: `X_train_nn`, `X_val_nn`, `X_test_nn` (CSR float32).
 
-## 3. Seção 12 — Árvore de Decisão (nós)
+## 3. Seção 12 — Árvore de Decisão (nós) — IMPLEMENTADO (12/08/2026)
 
 1. Árvore **sem poda** em `X_train_tree` (CSR float32): profundidade, nº de folhas, E_in, E_out (teste), E_in − E_out.
 2. **Minimal Cost-Complexity Pruning**: `cost_complexity_pruning_path` no treino → candidatos de `ccp_alpha` → seleção por validação (CV interna no treino, se necessário) → preferir árvore mais simples em empate → treinar podada → métricas no teste.
 3. Importância de features; salvar a árvore final em `reports/figures/`.
+
+**Decisão metodológica:** como a classe positiva é minoritária (~8%), as árvores usam `class_weight='balanced'`. O `ccp_alpha` é escolhido na validação com re-treino dos candidatos numa amostra estratificada (30k), com o caminho de poda calculado no treino completo; o teste é reservado para a avaliação final. **Otimização adicional (12/08/2026):** pré-poda `min_samples_leaf=30` (estabiliza folhas e reduz custo de treino) e **threshold de decisão otimizado por F1 na validação** (custo zero, apenas reclassifica probabilidades). O E_in também usa o threshold selecionado, para a comparação E_in/E_out ser consistente.
+
+**Resultados validados (execução 12/08/2026, com as 3 alavancas):**
+| | sem poda (msl=30) | podada + thr 0.70 |
+|---|---|---|
+| profundidade | 30 | 25 |
+| folhas | 3.909 | 773 |
+| E_in | 0.2484 | 0.1680 |
+| E_out (teste) | 0.3100 | 0.1788 |
+| E_in − E_out | −0.0616 | −0.0108 |
+| recall (teste) | 0.5255 | 0.4181 |
+| precisão (teste) | 0.1351 | 0.2038 |
+| F1 (teste) | 0.2149 | **0.2741** |
+
+O `ccp_alpha` selecionado (6.61e-05) + threshold 0.70 reduzem a complexidade (3.909 → 773 folhas), o overfitting (E_in−E_out = −0.011) e melhoram o F1 no teste de 0.215 → **0.274** (+28%) com precisão de 0.135 → **0.204** (+51%) e acurácia 0.69 → 0.82. O recall caiu (0.53 → 0.42) — trade-off esperado do threshold alto. Figura em `reports/figures/decision_tree_pruned.png` (max_depth=3).
+
+### 3.1 Dificuldades encontradas (documentação do processo)
+
+1. **Custo de re-treino dos candidatos de poda.** Avaliar o `ccp_alpha` re-treinando cada candidato no treino completo (215.257×214) é proibitivo (≈67 min para ~20 candidatos). **Solução:** o caminho de poda (`cost_complexity_pruning_path`) é calculado no treino completo (barato, uma passada), mas os candidatos são **re-treinados numa amostra estratificada de 30.000 linhas** e avaliados na validação completa (46.127). Como a seleção de hiperparâmetro não precisa da base completa, o custo caiu para ~6 min.
+2. **Poda destruía a classe positiva.** Sem `class_weight`, o `ccp_alpha` tende a podar em direção à classe majoritária: a árvore "podada" (27 folhas) tinha recall **0.0075** no teste (praticamente nunca previa a classe 1) — um resultado metodologicamente pobre. **Solução:** `class_weight='balanced'` em todas as árvores (sem poda, candidatos e final), alinhado ao desbalanceamento (~8% de positivos).
+3. **Caminho de poda na amostra escolhia `ccp_alpha=0`.** Inicialmente o caminho foi calculado numa amostra de 30k; como a árvore da amostra é muito menor que a do treino completo, o "melhor" F1 de validação correspondia a **não podar** (alpha=0), anulando a etapa de poda. **Solução:** calcular o caminho na **árvore sem poda já ajustada no treino completo** (6467 alphas distintos), usando a amostra apenas para re-treinar candidatos.
+4. **Tempo de execução da seção.** A árvore sem poda (90 de profundidade, 20.555 folhas) e a final levam ~5 min cada no treino completo. Mitigado rodando em background (Agg headless) e limitando candidatos a 7.
+5. **Limpeza de outputs em execução headless.** O executor de validação não persiste outputs no `.ipynb` (apenas valida a execução); os outputs reais são gerados no Run All do VS Code. Isso é esperado no fluxo do projeto.
+
+### 3.2 Conclusões da seção 12 (a consolidar na seção 14)
+
+- **Pré-poda controla a memorização.** A árvore sem pré-poda atinge E_in = 0 com 20.555 folhas (overfitting). Com `min_samples_leaf=30` a árvore fica com 3.909 folhas e E_in − E_out = −0.062 no teste — a memorização é reduzida já na base, e o `ccp_alpha` (6.61e-05) enxuga ainda mais (773 folhas, E_in − E_out = **−0.011**).
+- **Threshold de decisão é uma alavanca barata e efetiva.** Otimizar o threshold por F1 na validação (0.70) elevou o F1 no teste de 0.215 → **0.274** e a precisão de 0.135 → **0.204**, com acurácia 0.69 → 0.82. O recall caiu (0.53 → 0.42), mas o F1 — a métrica combinada — melhorou, que é o objetivo no desbalanceamento.
+- **Trade-off acurácia × recall.** O threshold alto troca recall por precisão: o modelo classifica como "dificuldade" apenas casos com alta confiança (prob ≥ 0.70), gerando menos falsos positivos. No problema (custo de um falso positivo é alto), isso é desejável.
+- **A classe minoritária é intrinsecamente difícil.** Mesmo balanceada e otimizada, a árvore tem F1 ~0.27 no teste — as features atuais dão sinal limitado para separar a classe 1. Isso motiva a comparação com a Rede Neural (seção 13) e a discussão de limitações na seção 14.
+- **Importância das features.** `EXT_SOURCE_MEAN` (0.50) domina, seguido de `CREDIT_ANNUITY_RATIO`, `AGE_YEARS`, `LTV`, `EXT_SOURCE_3`, `EMPLOYMENT_YEARS` — consistente com o conhecimento de domínio do Home Credit (scores externos e variáveis de crédito são os principais preditores).
+
+### 3.3 Melhorias de desempenho avaliadas (sem aumentar o tempo de treino)
+
+Problema inicial: F1 = 0.227 no teste, com precisão baixa (0.139) — a árvore detectava a classe 1 mas com muitos falsos positivos. Avaliamos alavancas **sem custo computacional adicional** (algumas reduzem o custo):
+
+1. **`class_weight` customizado** (`{0:1, 1:4}`, `{1:8}`, `{1:12}`): probe sintético mostrou que `'balanced'` já é ótimo; customizações não melhoraram o F1. **Rejeitado.**
+2. **`max_features`** (`'sqrt'`, 10, 15): reduz o custo de treino, mas o F1 caiu levemente (a aleatoriedade tipo RF precisa de muitas árvores para compensar). **Rejeitado** para árvore única.
+3. **`min_samples_leaf=30` (pré-poda):** reduz a árvore (profundidade 90→30, folhas 20.555→3.909), **reduz o custo de treino** e estabiliza as folhas. **Adotado.**
+4. **Threshold de decisão otimizado por F1 na validação:** custo zero (só reclassifica `predict_proba`); com threshold 0.70 o F1 no teste subiu e a precisão melhorou muito. **Adotado.**
+
+**Resultado da otimização (F1 no teste): 0.227 → 0.274 (+21%)**, precisão 0.139 → 0.204 (+47%), acurácia 0.66 → 0.82, com overfitting mínimo (E_in−E_out = −0.011) e treino **mais rápido** (menos folhas). O recall caiu de 0.62 → 0.42 (trade-off do threshold), mas F1 e precisão são o objetivo no desbalanceamento.
+
+### 3.4 Registro da iteração anterior (antes das alavancas de desempenho)
+
+Para fins de registro do processo, segue o estado **anterior** à otimização descrita em 3.3 (primeira versão validada da seção 12, com `class_weight='balanced'` e poda, **sem** `min_samples_leaf=30` e **sem** threshold otimizado):
+
+| | sem poda | podada |
+|---|---|---|
+| profundidade | 90 | 32 |
+| folhas | 20.555 | 2.154 |
+| E_in | 0.0000 | 0.2887 |
+| E_out (teste) | 0.1432 | 0.3386 |
+| E_in − E_out | −0.1432 | −0.0499 |
+| recall (teste) | 0.1665 | 0.6165 |
+| F1 (teste) | 0.1581 | 0.2272 |
+
+Características dessa iteração: árvore sem poda **memorizava** (E_in = 0, 20.555 folhas, profundidade 90); a poda por `ccp_alpha` (5.03e-05) reduzia o overfitting (E_in−E_out de −0.143 para −0.050) e elevava o recall no teste para 0.62, mas a **precisão era baixa (0.139)** e o F1 ficava em 0.227. Essa versão foi **substituída** pelas alavancas de 3.3 (que elevaram o F1 para 0.274 com treino mais rápido e menos complexidade), mantida aqui apenas como histórico do processo.
 
 ## 4. Seção 13 — Comparação dos Modelos + Submissão
 
@@ -86,6 +145,6 @@ Fluxo validado: 7 (correções determinísticas + variantes + 9 atributos com `s
 - [x] Executar o notebook do início ao fim (células 5–64) sem erros, sem warnings nas seções 7–10, com backend headless (Agg) — **feito na revisão final de 11/08/2026** (X 307.511×102; split 215.257/46.127/46.127; filtro 7+1; p = 214; 0 NaN/inf).
 - [ ] Rodar no VS Code (Run All) e salvar os outputs — evidência no arquivo versionado.
 - [ ] 11: seeds fixos; N = 215.257 e p = 214 usados na justificativa; métricas no teste.
-- [ ] 12: árvore sem poda → poda por `ccp_alpha`; árvore final em `reports/figures/`.
+- [x] 12: árvore sem poda → poda por `ccp_alpha`; árvore final em `reports/figures/` — **implementado e validado em 12/08/2026**.
 - [ ] 13: comparação no teste interno; submissão com asserts de esquema idêntico.
 - [ ] 14: conclusões alinhadas ao README.
