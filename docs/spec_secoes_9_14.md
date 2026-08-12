@@ -41,14 +41,25 @@ Fluxo validado: 7 (correções determinísticas + variantes + 9 atributos com `s
 
 ---
 
-## 2. Seção 11 — Rede Neural (colega, base alinhada)
+## 2. Seção 11 — Rede Neural (colega) — IMPLEMENTADO E VALIDADO (12/08/2026)
 
 - **Reprodutibilidade:** `tf.random.set_seed(RANDOM_STATE)`, `np.random.seed(RANDOM_STATE)`, `random.seed(RANDOM_STATE)` antes de construir o modelo.
-- Arquitetura conforme README: entrada (dimensão **p = 214**), 1+ camadas ocultas ReLU, 1 neurônio de saída sigmoide, `binary_crossentropy`, Adam.
-- Justificar com dimensão VC e Regra de Ouro (N = 215.257, p = 214), número de épocas, batch size, critério de parada (early stopping na perda de validação).
-- Acompanhar perdas/acurácias de treino e validação; identificar overfitting; calcular E_in e E_out no teste.
-- Métricas no teste interno: acurácia, precisão, recall (atenção à classe positiva), F1, matriz de confusão.
-- Matrizes de entrada: `X_train_nn`, `X_val_nn`, `X_test_nn` (CSR float32).
+- Arquitetura conforme README: entrada (dimensão **p = 214**, `sparse=True`), 1 camada oculta ReLU (99 neurônios), 1 neurônio de saída sigmoide, `binary_crossentropy`, Adam (lr=1e-3), batch 256, early stopping na `val_loss`.
+- `class_weight='balanced'` no treino; **BCE não ponderada** (`bce_unweighted`) usada para E_in/E_out comparáveis.
+- Teste acessado **uma única vez** (modelo congelado); `E_in`, `E_val`, `E_out` via `log_loss`.
+
+**Resultados reais (execução integrada 12/08/2026, threshold 0.50):**
+| métrica | valor |
+|---|---|
+| E_in / E_out | 0.5373 / 0.5502 (gap 0.0129) |
+| acurácia | 0.717 |
+| precisão | 0.169 |
+| recall | 0.641 |
+| F1 | 0.268 |
+| melhor época | 7 (17 executadas) |
+| parâmetros | 21.385 |
+
+Figuras: `reports/figures/neural_network_loss.png` e `neural_network_confusion_matrix.png`.
 
 ## 3. Seção 12 — Árvore de Decisão (nós) — IMPLEMENTADO (12/08/2026)
 
@@ -114,6 +125,27 @@ Para fins de registro do processo, segue o estado **anterior** à otimização d
 | F1 (teste) | 0.1581 | 0.2272 |
 
 Características dessa iteração: árvore sem poda **memorizava** (E_in = 0, 20.555 folhas, profundidade 90); a poda por `ccp_alpha` (5.03e-05) reduzia o overfitting (E_in−E_out de −0.143 para −0.050) e elevava o recall no teste para 0.62, mas a **precisão era baixa (0.139)** e o F1 ficava em 0.227. Essa versão foi **substituída** pelas alavancas de 3.3 (que elevaram o F1 para 0.274 com treino mais rápido e menos complexidade), mantida aqui apenas como histórico do processo.
+
+### 3.5 Integração da seção 11 (do colega) — 12/08/2026
+
+- O colega commitou e pushou a seção 11 no origin/main (9f2584) e criou a branch integrar-secao-11 (idêntica ao main).
+- Integração via git pull --rebase sobre o main local (seção 12 commitada como 52529f). Rebase **sem conflito** (as células da seção 11 foram adicionadas em posições distintas das da seção 12).
+- Notebook mesclado: **90 células**, seções 11 e 12 presentes, sem IDs duplicados, JSON válido.
+- **Re-execução de ponta a ponta validada** (nbclient, MPLBACKEND=Agg, TF 2.21/CPU): todas as células OK, sem erros, outputs persistidos. Execução ~20 min.
+- Ambiente: foi necessário instalar 	ensorflow==2.21.0 (ausente no Python 3.13 local) e 
+bclient/
+bformat para persistir outputs.
+
+**Comparação rápida RN × Árvore (teste interno) para a seção 13:**
+| métrica | RN (thr 0.50) | Árvore (thr 0.70) |
+|---|---|---|
+| F1 | 0.268 | 0.274 |
+| recall | 0.641 | 0.418 |
+| precisão | 0.169 | 0.204 |
+| acurácia | 0.717 | 0.821 |
+| E_in − E_out | 0.0129 | −0.0108 |
+
+Perfis diferentes: RN tem mais recall, árvore mais precisão; F1 muito próximos. Thresholds diferentes (0.50 RN vs 0.70 árvore) — considerar normalizar para comparação justa na seção 13.
 
 ## 4. Seção 13 — Comparação dos Modelos + Submissão
 
