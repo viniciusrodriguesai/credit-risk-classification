@@ -147,19 +147,37 @@ bformat para persistir outputs.
 
 Perfis diferentes: RN tem mais recall, árvore mais precisão; F1 muito próximos. Thresholds diferentes (0.50 RN vs 0.70 árvore) — considerar normalizar para comparação justa na seção 13.
 
-## 4. Seção 13 — Comparação dos Modelos + Submissão
+## 4. Seção 13 — Comparação dos Modelos — IMPLEMENTADO (12/08/2026, sem submissão)
 
-1. Tabela comparativa no **teste interno**: acurácia, precisão, recall, F1, E_in, E_out, E_in − E_out, complexidade (parâmetros / profundidade e folhas). Matrizes de confusão lado a lado.
+1. Tabela comparativa no **teste interno**: acurácia, precisão, recall, F1, E_in, E_out, E_in − E_out, complexidade (parâmetros / profundidade e folhas). Matrizes de confusão lado a lado. **Feito.**
 2. Seleção do modelo final por desempenho no teste + generalização + interpretabilidade.
-3. **Submissão** (nova subseção 13.x):
-   - Carregar `data/raw/application_test.csv` (48.744 × 121; validar ausência de `TARGET` e esquema do treino).
-   - Aplicar a **mesma** limpeza da seção 7 como transform (anomalia 365243 → NaN + flag; XNA → NaN; drop das 28 variantes; 12 features com `safe_ratio`; drop de `DAYS_BIRTH`/`DAYS_EMPLOYED`) → shape (48.744, 102); `assert` de igualdade de colunas com `X`.
-   - Aplicar os filtros e transformadores **fitados no treino** (10.1 + pipelines); `assert` de colunas vs. matriz de treino.
-   - Prever com ambos os modelos → `data/processed/submission_arvore.csv` e `submission_rn.csv` com `SK_ID_CURR`, `TARGET` (probabilidade da classe positiva; formato Kaggle combinado com o colega).
+3. **Submissão — DESCARTADA por decisão do projeto (12/08/2026).** A comparação acadêmica é feita no teste interno; o `application_test.csv` (sem rótulos) não será usado para predições de submissão. O `data/processed/` permanece no `.gitignore`.
 
-## 5. Seção 14 — Conclusões
+**Resultados validados (execução 12/08/2026, teste interno 46.127):**
+| métrica | RN (thr 0.50) | Árvore (thr 0.70) | Árvore (thr 0.50) |
+|---|---|---|---|
+| F1 | 0.268 | **0.274** | 0.228 |
+| recall | **0.641** | 0.418 | 0.673 |
+| precisão | 0.169 | **0.204** | 0.138 |
+| acurácia | 0.717 | **0.821** | 0.633 |
+| E_in − E_out | 0.0129 | −0.0108 | −0.199 |
+| AUC | **0.7495** | 0.7026 | — |
+| complexidade | 21.385 parâmetros | 25 prof / 773 folhas | — |
+
+**Análise:** a RN tem maior AUC (0.75 vs 0.70), indicando melhor capacidade de discriminação independente de threshold. Em F1, a árvore com threshold otimizado (0.274) supera a RN (0.268), mas a mesma árvore com threshold 0.50 cai para 0.228 — o F1 alto depende do ajuste do threshold. Perfis opostos: RN (recall 0.64) vs árvore (precisão 0.20). A árvore com thr 0.50 apresenta E_in−E_out = −0.199 (overfitting aparente), mitigado pelo threshold 0.70 (−0.011).
+
+Figuras: `reports/figures/comparison_confusion_matrices.png` e `comparison_roc_curves.png`.
+
+## 5. Seção 14 — Conclusões — IMPLEMENTADO (12/08/2026)
 
 - Responder à pergunta do problema; comparar modelos (desempenho, generalização, E_in vs E_out, overfitting, complexidade, interpretabilidade); limitações (desbalanceamento, Etapa 2 pendente).
+
+**Conclusões consolidadas (notebook, seção 14):**
+- **Resposta à pergunta:** sim, é possível identificar casos de dificuldade de pagamento com as variáveis atuais — RN (AUC 0.75) e Árvore (AUC 0.70) superam o aleatório; recall de 0.64 (RN) e 0.42 (Árvore) contra prevalência de ~8%.
+- **Comparação:** RN tem melhor AUC e recall; Árvore (thr 0.70) tem melhor F1 (0.274), precisão (0.204) e acurácia (0.821), além de interpretabilidade.
+- **Achados:** `EXT_SOURCE_MEAN` é o preditor dominante (importância 0.50); desbalanceamento é o maior obstáculo; o threshold de decisão impacta muito o ponto de operação.
+- **Limitações:** desbalanceamento severo (~8%); apenas a solicitação atual (sem `bureau`/`previous_application`); sem submissão ao teste externo (decisão do projeto); métricas de erro heterogêneas (log-loss vs erro de classificação).
+- **Trabalhos futuros:** Etapa 2 (dados auxiliares), ensembles, calibração, busca de hiperparâmetros com GPU, análise de custo-benefício do threshold.
 
 ---
 
@@ -176,7 +194,7 @@ Perfis diferentes: RN tem mais recall, árvore mais precisão; F1 muito próximo
 
 - [x] Executar o notebook do início ao fim (células 5–64) sem erros, sem warnings nas seções 7–10, com backend headless (Agg) — **feito na revisão final de 11/08/2026** (X 307.511×102; split 215.257/46.127/46.127; filtro 7+1; p = 214; 0 NaN/inf).
 - [ ] Rodar no VS Code (Run All) e salvar os outputs — evidência no arquivo versionado.
-- [ ] 11: seeds fixos; N = 215.257 e p = 214 usados na justificativa; métricas no teste.
+- [x] 11: seeds fixos; N = 215.257 e p = 214 usados na justificativa; métricas no teste — **implementado e validado em 12/08/2026** (F1 0.268, recall 0.641, AUC 0.75).
 - [x] 12: árvore sem poda → poda por `ccp_alpha`; árvore final em `reports/figures/` — **implementado e validado em 12/08/2026**.
-- [ ] 13: comparação no teste interno; submissão com asserts de esquema idêntico.
-- [ ] 14: conclusões alinhadas ao README.
+- [x] 13: comparação no teste interno — **implementado e validado em 12/08/2026**; submissão descartada por decisão do projeto.
+- [x] 14: conclusões alinhadas ao README — **implementado em 12/08/2026** (resposta à pergunta, comparação, achados, limitações, trabalhos futuros).
