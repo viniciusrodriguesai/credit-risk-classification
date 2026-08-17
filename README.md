@@ -7,7 +7,7 @@
 
 Projeto de aprendizagem de máquina para identificação de solicitações de crédito associadas à dificuldade de pagamento, utilizando **Redes Neurais** e **Árvores de Decisão**.
 
-O projeto utiliza dados da competição **Home Credit Default Risk**, disponibilizada no Kaggle, e está sendo desenvolvido como trabalho acadêmico da disciplina de Aprendizagem de Máquina.
+O projeto utiliza dados da competição **Home Credit Default Risk**, disponibilizada no Kaggle, e está sendo desenvolvido como trabalho acadêmico da disciplina de Aprendizagem de Máquina, Feito por Gustavo Pereira e Vinicius Mangueira.
 
 ---
 
