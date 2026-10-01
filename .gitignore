@@ -229,3 +229,6 @@ data/raw/*
 
 # Artefatos gerados (submissoes)
 data/processed/
+
+# Canonical experiment outputs (potential applicant-level information)
+runs/
