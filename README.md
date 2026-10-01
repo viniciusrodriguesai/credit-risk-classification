@@ -27,10 +27,10 @@ Run the notebook from the repository root or the notebooks directory. Training c
 
 ## Current methodological limitations
 
-A separate [tree experiment protocol](docs/TREE_PROTOCOL.md) now provides train-only preprocessing, validation-based selection, a dummy baseline and run metadata. Its synthetic protocol checks pass; it has not yet been run on Home Credit and does not reproduce the historical neural-network comparison.
+A separate [tree experiment protocol](docs/TREE_PROTOCOL.md) now provides train-only preprocessing, validation-based selection, a dummy baseline and run metadata. Its protocol checks pass and a [recorded Home Credit run](docs/HOMECREDIT_RESULTS.md) achieves ROC AUC **0.7227**, average precision **0.1972**, and F1 **0.2694**. This is a separate raw-feature tree experiment, with prior dataset/test exposure disclosed; it does not reproduce the historical neural-network comparison.
 
 - The tracked pruning code uses one validation split and 30,000 training rows per candidate, rather than the cross-validation implementation claimed in older documentation.
-- Test data are accessed during intermediate diagnostics. A strict, locked final-evaluation protocol remains to be implemented and rerun.
+- Test data are accessed during intermediate diagnostics. The new tree script freezes selection before final evaluation, but the dataset already has historical test exposure; independent validation remains pending.
 - Neural-network BCE and tree classification error are different quantities; their generalization gaps should not be directly ranked.
 - Fairness, external generalization and probability calibration have not been established.
 - Saved model files should not be treated as deployable artifacts without matching preprocessing and run metadata.

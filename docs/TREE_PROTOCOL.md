@@ -1,6 +1,6 @@
 # Reproducible tree experiment
 
-This is a **new, separate experiment**, not a reproduction of the historical notebook or its neural network. Real Home Credit training has not been performed as part of this change.
+This is a **new, separate experiment**, not a reproduction of the historical notebook or its neural network. A real-data run is now recorded in [Home Credit results](HOMECREDIT_RESULTS.md), including aggregate metrics and historical test-exposure limitations.
 
 ## Protocol fixed before evaluation
 
@@ -15,7 +15,7 @@ Changing the experiment after inspecting test results invalidates its status as 
 
 ## Run
 
-Install the repository dependencies, then from the repository root:
+Install `requirements-tree.txt` for this separate tree experiment, then from the repository root:
 
 ```bash
 python scripts/train_tree.py --data data/raw/application_train.csv --output runs/tree-v1
@@ -28,4 +28,4 @@ Outputs: `manifest.json` (dataset fingerprint, package versions, source commit, 
 
 ## Validation and limits
 
-Synthetic tests check split separation, repeatability, train-only imputation, unseen categories, persistence, and duplicate rejection. They do not establish performance, calibration, fairness, or external generalization. This protocol makes no claim to reproduce historical feature engineering. Dependencies remain unpinned; the manifest records actual installed versions for a future environment lock. The neural-network protocol is still pending.
+Synthetic tests check split separation, repeatability, train-only imputation, unseen categories, persistence, and duplicate rejection. They do not establish performance, calibration, fairness, or external generalization. This protocol makes no claim to reproduce historical feature engineering. The eight tree environment packages are pinned to the recorded run; a clean installation and protocol tests were verified. Package hashes and platform constraints are not locked. The neural-network protocol is still pending.
