@@ -1,3 +1,5 @@
+> **Aviso de proveniência — auditoria de portfólio:** este documento histórico diverge do notebook atualmente versionado. Seus números e alegações de validação cruzada não foram confirmados nesta auditoria. Consulte [RESULTS_PROVENANCE.md](RESULTS_PROVENANCE.md) para as diferenças e o protocolo de verificação necessário.
+
 # Spec — Seções 9 a 14 + Submissão (notebook `credit_risk_classification.ipynb`)
 
 > Documento vivo: seções 9 e 10 já estão **implementadas e validadas** (70 células, execução de ponta a ponta OK). Este spec define o estado atual (contratos), o que falta (seções 11–14 + submissão) e como validar. Decisões acordadas com o colega em 11/08/2026: **teste interno 70/15/15** (avaliação concreta no teste) e **`application_test.csv` apenas para submissão** ao final. Em 11/08/2026 foram adicionadas as features da solução vencedora do Kaggle: `LTV`, `DOWN_PAYMENT` e `EXT_SOURCE_MEAN`.
