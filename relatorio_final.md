@@ -1,3 +1,5 @@
+> **Aviso de proveniência — auditoria de portfólio:** este documento histórico diverge do notebook atualmente versionado. Seus números e alegações de validação cruzada não foram confirmados nesta auditoria. Consulte [RESULTS_PROVENANCE.md](docs/RESULTS_PROVENANCE.md) para as diferenças e o protocolo de verificação necessário.
+
 # Classificação de Risco de Crédito com Aprendizagem de Máquina
 
 **Disciplina:** Aprendizagem de Máquina  
