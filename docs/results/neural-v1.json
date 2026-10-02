@@ -1,0 +1,496 @@
+{
+  "protocol": "raw-feature-balanced-mlp-v1",
+  "seed": 42,
+  "python": "3.12.14",
+  "epochs": 30,
+  "dataset_sha256": "52e96b895b1112e1c853f670e58372719c8441c5ed1c57ac2f7fad559d784f5f",
+  "script_sha256": "81c411bfa53959722055ca379a93f2f305e4c51bf37710929ed4e1edc183fac2",
+  "tree_script_sha256": "1da5554e1d8f703cc6c421ba7b6fe736d4cc7c4aa29e8fbb189e697abce1b996",
+  "source_commit": "45d666590aa1d1bea7243ac288b86de7df163a93",
+  "versions": {
+    "numpy": "2.2.4",
+    "pandas": "3.0.6",
+    "scikit-learn": "1.8.0",
+    "joblib": "1.5.3",
+    "scipy": "1.17.0",
+    "threadpoolctl": "3.6.0"
+  },
+  "split_sizes": {
+    "train": 215257,
+    "validation": 46127,
+    "test": 46127
+  },
+  "selected": {
+    "architecture": [
+      64,
+      32
+    ],
+    "threshold": 0.7
+  },
+  "validation_candidates": [
+    {
+      "architecture": [
+        32
+      ],
+      "threshold": 0.1,
+      "validation": {
+        "roc_auc": 0.740649221184495,
+        "average_precision": 0.22047742104376422,
+        "f1": 0.15142792985894216,
+        "threshold": 0.1,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        32
+      ],
+      "threshold": 0.2,
+      "validation": {
+        "roc_auc": 0.740649221184495,
+        "average_precision": 0.22047742104376422,
+        "f1": 0.16161526514311073,
+        "threshold": 0.2,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        32
+      ],
+      "threshold": 0.3,
+      "validation": {
+        "roc_auc": 0.740649221184495,
+        "average_precision": 0.22047742104376422,
+        "f1": 0.18194112139810673,
+        "threshold": 0.3,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        32
+      ],
+      "threshold": 0.4,
+      "validation": {
+        "roc_auc": 0.740649221184495,
+        "average_precision": 0.22047742104376422,
+        "f1": 0.20804953560371517,
+        "threshold": 0.4,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        32
+      ],
+      "threshold": 0.5,
+      "validation": {
+        "roc_auc": 0.740649221184495,
+        "average_precision": 0.22047742104376422,
+        "f1": 0.2394103620203772,
+        "threshold": 0.5,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        32
+      ],
+      "threshold": 0.6,
+      "validation": {
+        "roc_auc": 0.740649221184495,
+        "average_precision": 0.22047742104376422,
+        "f1": 0.270263671875,
+        "threshold": 0.6,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        32
+      ],
+      "threshold": 0.7,
+      "validation": {
+        "roc_auc": 0.740649221184495,
+        "average_precision": 0.22047742104376422,
+        "f1": 0.285475327571787,
+        "threshold": 0.7,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        32
+      ],
+      "threshold": 0.8,
+      "validation": {
+        "roc_auc": 0.740649221184495,
+        "average_precision": 0.22047742104376422,
+        "f1": 0.24865511057979678,
+        "threshold": 0.8,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        32
+      ],
+      "threshold": 0.9,
+      "validation": {
+        "roc_auc": 0.740649221184495,
+        "average_precision": 0.22047742104376422,
+        "f1": 0.10021271567005437,
+        "threshold": 0.9,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        64,
+        32
+      ],
+      "threshold": 0.1,
+      "validation": {
+        "roc_auc": 0.7429614739832187,
+        "average_precision": 0.21440774031907467,
+        "f1": 0.1530351700848365,
+        "threshold": 0.1,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        64,
+        32
+      ],
+      "threshold": 0.2,
+      "validation": {
+        "roc_auc": 0.7429614739832187,
+        "average_precision": 0.21440774031907467,
+        "f1": 0.16834609387726607,
+        "threshold": 0.2,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        64,
+        32
+      ],
+      "threshold": 0.3,
+      "validation": {
+        "roc_auc": 0.7429614739832187,
+        "average_precision": 0.21440774031907467,
+        "f1": 0.19193002257336342,
+        "threshold": 0.3,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        64,
+        32
+      ],
+      "threshold": 0.4,
+      "validation": {
+        "roc_auc": 0.7429614739832187,
+        "average_precision": 0.21440774031907467,
+        "f1": 0.22098206196774778,
+        "threshold": 0.4,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        64,
+        32
+      ],
+      "threshold": 0.5,
+      "validation": {
+        "roc_auc": 0.7429614739832187,
+        "average_precision": 0.21440774031907467,
+        "f1": 0.25314589068029886,
+        "threshold": 0.5,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        64,
+        32
+      ],
+      "threshold": 0.6,
+      "validation": {
+        "roc_auc": 0.7429614739832187,
+        "average_precision": 0.21440774031907467,
+        "f1": 0.28031450623963067,
+        "threshold": 0.6,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        64,
+        32
+      ],
+      "threshold": 0.7,
+      "validation": {
+        "roc_auc": 0.7429614739832187,
+        "average_precision": 0.21440774031907467,
+        "f1": 0.2871725076556652,
+        "threshold": 0.7,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        64,
+        32
+      ],
+      "threshold": 0.8,
+      "validation": {
+        "roc_auc": 0.7429614739832187,
+        "average_precision": 0.21440774031907467,
+        "f1": 0.20029618659755646,
+        "threshold": 0.8,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "architecture": [
+        64,
+        32
+      ],
+      "threshold": 0.9,
+      "validation": {
+        "roc_auc": 0.7429614739832187,
+        "average_precision": 0.21440774031907467,
+        "f1": 0.03350515463917526,
+        "threshold": 0.9,
+        "rows": 46127,
+        "positive_rows": 3724
+      },
+      "iterations": 30,
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (30) reached and the optimization hasn't converged yet."
+      ]
+    }
+  ],
+  "test": {
+    "roc_auc": 0.7442817806220416,
+    "average_precision": 0.21291633334136517,
+    "f1": 0.28874351454996616,
+    "threshold": 0.7,
+    "rows": 46127,
+    "positive_rows": 3724
+  },
+  "error_analysis": {
+    "confusion_matrix_labels": [
+      0,
+      1
+    ],
+    "confusion_matrix": [
+      [
+        38541,
+        3862
+      ],
+      [
+        2444,
+        1280
+      ]
+    ],
+    "precision": 0.24893037728510306,
+    "recall": 0.34371643394199786,
+    "brier_score": 0.20753871903862026,
+    "calibration_bins": [
+      {
+        "lower": 0.0,
+        "upper": 0.1,
+        "rows": 1414,
+        "mean_probability": 0.0703681719645737,
+        "positive_rate": 0.015558698727015558
+      },
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "rows": 5515,
+        "mean_probability": 0.15558208611213495,
+        "positive_rate": 0.017769718948322757
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.3,
+        "rows": 7491,
+        "mean_probability": 0.2508950873956046,
+        "positive_rate": 0.02990254972633827
+      },
+      {
+        "lower": 0.3,
+        "upper": 0.4,
+        "rows": 7928,
+        "mean_probability": 0.3497726551748243,
+        "positive_rate": 0.041498486377396566
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "rows": 7157,
+        "mean_probability": 0.44858200824033856,
+        "positive_rate": 0.06469191001816403
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6,
+        "rows": 6358,
+        "mean_probability": 0.5483573120930956,
+        "positive_rate": 0.0940547341931425
+      },
+      {
+        "lower": 0.6,
+        "upper": 0.7,
+        "rows": 5122,
+        "mean_probability": 0.6482786633315557,
+        "positive_rate": 0.13861772745021475
+      },
+      {
+        "lower": 0.7,
+        "upper": 0.8,
+        "rows": 3445,
+        "mean_probability": 0.7463438513228521,
+        "positive_rate": 0.2127721335268505
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "rows": 1529,
+        "mean_probability": 0.8399721159800507,
+        "positive_rate": 0.31654676258992803
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "rows": 168,
+        "mean_probability": 0.9212970589985136,
+        "positive_rate": 0.375
+      }
+    ]
+  },
+  "loss_curve": [
+    0.9735938059912685,
+    0.6315647345206069,
+    0.6222186210354637,
+    0.6202225154798092,
+    0.6179932081408198,
+    0.6134731577374856,
+    0.6156228725808948,
+    0.6140002259816699,
+    0.6106392573437688,
+    0.6141625843174917,
+    0.6097828005292129,
+    0.6092889301851694,
+    0.60659212996125,
+    0.609238029398194,
+    0.6043245164098671,
+    0.6072518382706191,
+    0.604733731031508,
+    0.6031982659948945,
+    0.6024776509477276,
+    0.6056035465382558,
+    0.6029597842827651,
+    0.601926142490393,
+    0.6041177628800379,
+    0.600542963313135,
+    0.5988166513738988,
+    0.5989490872332668,
+    0.5973826244373152,
+    0.5965683652716179,
+    0.5956449691972101,
+    0.5955664112981806
+  ]
+}
