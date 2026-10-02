@@ -1,0 +1,2355 @@
+{
+  "protocol": "uci-credit-v1",
+  "source_commit": "9a6aa7c8ef9f6237b1530e081238570ebc36fecd",
+  "script_sha256": "4088b3a0e69d3a6f94f691c460bf6d6c5f2d5baedc45737eab2c4241b885a47f",
+  "protocol_sha256": "e0e21903617638500aa686588bb5b53eb880bdfc99ccf79105405a53b32118a6",
+  "python": "3.12.14",
+  "versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0",
+    "joblib": "1.5.3",
+    "threadpoolctl": "3.6.0",
+    "xlrd": "2.0.2"
+  },
+  "data_manifest": {
+    "dataset_sha256": "30c6be3abd8dcfd3e6096c828bad8c2f011238620f5369220bd60cfc82700933",
+    "split_files": {
+      "train": "2093c9a579a00b9f38cfedcaf7b6843d5ef83a61c56868bcc2e2e901c666fdd4",
+      "validation": "b4a55e5893badf3ab1b5c6d72865385355aed86d3b651b9f0bbc6368ddd08f50",
+      "test": "a73306c051b846b7f6a71a959507f54135e073e2b6b8007f6bcb175c7382de2b"
+    },
+    "split_sizes": {
+      "train": 21123,
+      "validation": 4500,
+      "test": 4377
+    }
+  },
+  "train_prevalence": 0.2215120958197226,
+  "selected": {
+    "logistic": {
+      "parameters": {
+        "C": 0.1
+      },
+      "threshold": 0.6,
+      "validation": {
+        "roc_auc": 0.722337910542425,
+        "average_precision": 0.5180792506985217,
+        "f1": 0.52,
+        "precision": 0.6023166023166023,
+        "recall": 0.4574780058651026,
+        "brier": 0.20547929288374375,
+        "confusion_matrix": [
+          [
+            3168,
+            309
+          ],
+          [
+            555,
+            468
+          ]
+        ]
+      },
+      "model_sha256": "d4dda0a9b574dce562073c0c044fc96df6b4cbe9dbd55132421c59b51e09903d"
+    },
+    "tree": {
+      "parameters": {
+        "max_depth": 5,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.5,
+      "validation": {
+        "roc_auc": 0.7651112421214566,
+        "average_precision": 0.5394416968485721,
+        "f1": 0.5408577878103837,
+        "precision": 0.50251677852349,
+        "recall": 0.5855327468230694,
+        "brier": 0.18263556521643023,
+        "confusion_matrix": [
+          [
+            2884,
+            593
+          ],
+          [
+            424,
+            599
+          ]
+        ]
+      },
+      "model_sha256": "ae2e07d6404e39c4f0c0e7b96f9702b288a9e2483238caf0221f8e86edd01b02"
+    },
+    "mlp": {
+      "parameters": {
+        "architecture": [
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.6,
+      "validation": {
+        "roc_auc": 0.7732939065288977,
+        "average_precision": 0.5583251780291643,
+        "f1": 0.5577492596248766,
+        "precision": 0.5633100697906281,
+        "recall": 0.552297165200391,
+        "brier": 0.18458136844697415,
+        "confusion_matrix": [
+          [
+            3039,
+            438
+          ],
+          [
+            458,
+            565
+          ]
+        ]
+      },
+      "model_sha256": "afb2a0745afef9d7974a44365a14bbae7e693b790539c168566e04f6156e9248"
+    }
+  },
+  "overall_selected_family": "mlp",
+  "validation_candidates": [
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 0.1
+      },
+      "threshold": 0.1,
+      "validation": {
+        "roc_auc": 0.722337910542425,
+        "average_precision": 0.5180792506985217,
+        "f1": 0.3717008797653959,
+        "precision": 0.2287390029325513,
+        "recall": 0.9912023460410557,
+        "brier": 0.20547929288374375,
+        "confusion_matrix": [
+          [
+            58,
+            3419
+          ],
+          [
+            9,
+            1014
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 0.1
+      },
+      "threshold": 0.2,
+      "validation": {
+        "roc_auc": 0.722337910542425,
+        "average_precision": 0.5180792506985217,
+        "f1": 0.38082245176378876,
+        "precision": 0.2378286270691334,
+        "recall": 0.9550342130987293,
+        "brier": 0.20547929288374375,
+        "confusion_matrix": [
+          [
+            346,
+            3131
+          ],
+          [
+            46,
+            977
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 0.1
+      },
+      "threshold": 0.3,
+      "validation": {
+        "roc_auc": 0.722337910542425,
+        "average_precision": 0.5180792506985217,
+        "f1": 0.39263271939328276,
+        "precision": 0.2522271714922049,
+        "recall": 0.8856304985337243,
+        "brier": 0.20547929288374375,
+        "confusion_matrix": [
+          [
+            791,
+            2686
+          ],
+          [
+            117,
+            906
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 0.1
+      },
+      "threshold": 0.4,
+      "validation": {
+        "roc_auc": 0.722337910542425,
+        "average_precision": 0.5180792506985217,
+        "f1": 0.41889436802491564,
+        "precision": 0.2851590106007067,
+        "recall": 0.7888563049853372,
+        "brier": 0.20547929288374375,
+        "confusion_matrix": [
+          [
+            1454,
+            2023
+          ],
+          [
+            216,
+            807
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 0.1
+      },
+      "threshold": 0.5,
+      "validation": {
+        "roc_auc": 0.722337910542425,
+        "average_precision": 0.5180792506985217,
+        "f1": 0.48159057437407954,
+        "precision": 0.38629651506202006,
+        "recall": 0.6392961876832844,
+        "brier": 0.20547929288374375,
+        "confusion_matrix": [
+          [
+            2438,
+            1039
+          ],
+          [
+            369,
+            654
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 0.1
+      },
+      "threshold": 0.6,
+      "validation": {
+        "roc_auc": 0.722337910542425,
+        "average_precision": 0.5180792506985217,
+        "f1": 0.52,
+        "precision": 0.6023166023166023,
+        "recall": 0.4574780058651026,
+        "brier": 0.20547929288374375,
+        "confusion_matrix": [
+          [
+            3168,
+            309
+          ],
+          [
+            555,
+            468
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 0.1
+      },
+      "threshold": 0.7,
+      "validation": {
+        "roc_auc": 0.722337910542425,
+        "average_precision": 0.5180792506985217,
+        "f1": 0.47043534762833006,
+        "precision": 0.7015503875968992,
+        "recall": 0.35386119257087,
+        "brier": 0.20547929288374375,
+        "confusion_matrix": [
+          [
+            3323,
+            154
+          ],
+          [
+            661,
+            362
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 0.1
+      },
+      "threshold": 0.8,
+      "validation": {
+        "roc_auc": 0.722337910542425,
+        "average_precision": 0.5180792506985217,
+        "f1": 0.22738589211618257,
+        "precision": 0.7527472527472527,
+        "recall": 0.13391984359726294,
+        "brier": 0.20547929288374375,
+        "confusion_matrix": [
+          [
+            3432,
+            45
+          ],
+          [
+            886,
+            137
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 0.1
+      },
+      "threshold": 0.9,
+      "validation": {
+        "roc_auc": 0.722337910542425,
+        "average_precision": 0.5180792506985217,
+        "f1": 0.032504780114722756,
+        "precision": 0.7391304347826086,
+        "recall": 0.016617790811339198,
+        "brier": 0.20547929288374375,
+        "confusion_matrix": [
+          [
+            3471,
+            6
+          ],
+          [
+            1006,
+            17
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 1.0
+      },
+      "threshold": 0.1,
+      "validation": {
+        "roc_auc": 0.7224143801003718,
+        "average_precision": 0.517595972668961,
+        "f1": 0.37190537318907024,
+        "precision": 0.22889390519187358,
+        "recall": 0.9912023460410557,
+        "brier": 0.20545568634903494,
+        "confusion_matrix": [
+          [
+            61,
+            3416
+          ],
+          [
+            9,
+            1014
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 1.0
+      },
+      "threshold": 0.2,
+      "validation": {
+        "roc_auc": 0.7224143801003718,
+        "average_precision": 0.517595972668961,
+        "f1": 0.38076622361219703,
+        "precision": 0.23796726117762032,
+        "recall": 0.9521016617790812,
+        "brier": 0.20545568634903494,
+        "confusion_matrix": [
+          [
+            358,
+            3119
+          ],
+          [
+            49,
+            974
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 1.0
+      },
+      "threshold": 0.3,
+      "validation": {
+        "roc_auc": 0.7224143801003718,
+        "average_precision": 0.517595972668961,
+        "f1": 0.39349240780911066,
+        "precision": 0.2528575411207137,
+        "recall": 0.8866080156402737,
+        "brier": 0.20545568634903494,
+        "confusion_matrix": [
+          [
+            797,
+            2680
+          ],
+          [
+            116,
+            907
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 1.0
+      },
+      "threshold": 0.4,
+      "validation": {
+        "roc_auc": 0.7224143801003718,
+        "average_precision": 0.517595972668961,
+        "f1": 0.4195223260643821,
+        "precision": 0.28561329091551785,
+        "recall": 0.7898338220918866,
+        "brier": 0.20545568634903494,
+        "confusion_matrix": [
+          [
+            1456,
+            2021
+          ],
+          [
+            215,
+            808
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 1.0
+      },
+      "threshold": 0.5,
+      "validation": {
+        "roc_auc": 0.7224143801003718,
+        "average_precision": 0.517595972668961,
+        "f1": 0.48032364840014713,
+        "precision": 0.38502358490566035,
+        "recall": 0.6383186705767351,
+        "brier": 0.20545568634903494,
+        "confusion_matrix": [
+          [
+            2434,
+            1043
+          ],
+          [
+            370,
+            653
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 1.0
+      },
+      "threshold": 0.6,
+      "validation": {
+        "roc_auc": 0.7224143801003718,
+        "average_precision": 0.517595972668961,
+        "f1": 0.5163434903047092,
+        "precision": 0.5959079283887468,
+        "recall": 0.4555229716520039,
+        "brier": 0.20545568634903494,
+        "confusion_matrix": [
+          [
+            3161,
+            316
+          ],
+          [
+            557,
+            466
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 1.0
+      },
+      "threshold": 0.7,
+      "validation": {
+        "roc_auc": 0.7224143801003718,
+        "average_precision": 0.517595972668961,
+        "f1": 0.47020725388601037,
+        "precision": 0.6967370441458733,
+        "recall": 0.3548387096774194,
+        "brier": 0.20545568634903494,
+        "confusion_matrix": [
+          [
+            3319,
+            158
+          ],
+          [
+            660,
+            363
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 1.0
+      },
+      "threshold": 0.8,
+      "validation": {
+        "roc_auc": 0.7224143801003718,
+        "average_precision": 0.517595972668961,
+        "f1": 0.22700911350455674,
+        "precision": 0.7445652173913043,
+        "recall": 0.13391984359726294,
+        "brier": 0.20545568634903494,
+        "confusion_matrix": [
+          [
+            3430,
+            47
+          ],
+          [
+            886,
+            137
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 1.0
+      },
+      "threshold": 0.9,
+      "validation": {
+        "roc_auc": 0.7224143801003718,
+        "average_precision": 0.517595972668961,
+        "f1": 0.03062200956937799,
+        "precision": 0.7272727272727273,
+        "recall": 0.015640273704789834,
+        "brier": 0.20545568634903494,
+        "confusion_matrix": [
+          [
+            3471,
+            6
+          ],
+          [
+            1007,
+            16
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 10.0
+      },
+      "threshold": 0.1,
+      "validation": {
+        "roc_auc": 0.722474543649639,
+        "average_precision": 0.5173583673990534,
+        "f1": 0.37181134153055606,
+        "precision": 0.2288748305467691,
+        "recall": 0.9902248289345064,
+        "brier": 0.20551622506321054,
+        "confusion_matrix": [
+          [
+            64,
+            3413
+          ],
+          [
+            10,
+            1013
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 10.0
+      },
+      "threshold": 0.2,
+      "validation": {
+        "roc_auc": 0.722474543649639,
+        "average_precision": 0.5173583673990534,
+        "f1": 0.38067292644757433,
+        "precision": 0.2379554903399364,
+        "recall": 0.9511241446725318,
+        "brier": 0.20551622506321054,
+        "confusion_matrix": [
+          [
+            361,
+            3116
+          ],
+          [
+            50,
+            973
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 10.0
+      },
+      "threshold": 0.3,
+      "validation": {
+        "roc_auc": 0.722474543649639,
+        "average_precision": 0.5173583673990534,
+        "f1": 0.393058568329718,
+        "precision": 0.2525787566211319,
+        "recall": 0.8856304985337243,
+        "brier": 0.20551622506321054,
+        "confusion_matrix": [
+          [
+            796,
+            2681
+          ],
+          [
+            117,
+            906
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 10.0
+      },
+      "threshold": 0.4,
+      "validation": {
+        "roc_auc": 0.722474543649639,
+        "average_precision": 0.5173583673990534,
+        "f1": 0.41963126460659567,
+        "precision": 0.2857142857142857,
+        "recall": 0.7898338220918866,
+        "brier": 0.20551622506321054,
+        "confusion_matrix": [
+          [
+            1457,
+            2020
+          ],
+          [
+            215,
+            808
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 10.0
+      },
+      "threshold": 0.5,
+      "validation": {
+        "roc_auc": 0.722474543649639,
+        "average_precision": 0.5173583673990534,
+        "f1": 0.4811147781444811,
+        "precision": 0.38497652582159625,
+        "recall": 0.6412512218963832,
+        "brier": 0.20551622506321054,
+        "confusion_matrix": [
+          [
+            2429,
+            1048
+          ],
+          [
+            367,
+            656
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 10.0
+      },
+      "threshold": 0.6,
+      "validation": {
+        "roc_auc": 0.722474543649639,
+        "average_precision": 0.5173583673990534,
+        "f1": 0.5160575858250277,
+        "precision": 0.5951468710089399,
+        "recall": 0.4555229716520039,
+        "brier": 0.20551622506321054,
+        "confusion_matrix": [
+          [
+            3160,
+            317
+          ],
+          [
+            557,
+            466
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 10.0
+      },
+      "threshold": 0.7,
+      "validation": {
+        "roc_auc": 0.722474543649639,
+        "average_precision": 0.5173583673990534,
+        "f1": 0.47150259067357514,
+        "precision": 0.6986564299424184,
+        "recall": 0.35581622678396874,
+        "brier": 0.20551622506321054,
+        "confusion_matrix": [
+          [
+            3320,
+            157
+          ],
+          [
+            659,
+            364
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 10.0
+      },
+      "threshold": 0.8,
+      "validation": {
+        "roc_auc": 0.722474543649639,
+        "average_precision": 0.5173583673990534,
+        "f1": 0.22700911350455674,
+        "precision": 0.7445652173913043,
+        "recall": 0.13391984359726294,
+        "brier": 0.20551622506321054,
+        "confusion_matrix": [
+          [
+            3430,
+            47
+          ],
+          [
+            886,
+            137
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "logistic",
+      "parameters": {
+        "C": 10.0
+      },
+      "threshold": 0.9,
+      "validation": {
+        "roc_auc": 0.722474543649639,
+        "average_precision": 0.5173583673990534,
+        "f1": 0.03244274809160305,
+        "precision": 0.68,
+        "recall": 0.016617790811339198,
+        "brier": 0.20551622506321054,
+        "confusion_matrix": [
+          [
+            3469,
+            8
+          ],
+          [
+            1006,
+            17
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 3,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.1,
+      "validation": {
+        "roc_auc": 0.7514996608069056,
+        "average_precision": 0.5013544110867276,
+        "f1": 0.3704508419337317,
+        "precision": 0.22733333333333333,
+        "recall": 1.0,
+        "brier": 0.18542353840675627,
+        "confusion_matrix": [
+          [
+            0,
+            3477
+          ],
+          [
+            0,
+            1023
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 3,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.2,
+      "validation": {
+        "roc_auc": 0.7514996608069056,
+        "average_precision": 0.5013544110867276,
+        "f1": 0.3704508419337317,
+        "precision": 0.22733333333333333,
+        "recall": 1.0,
+        "brier": 0.18542353840675627,
+        "confusion_matrix": [
+          [
+            0,
+            3477
+          ],
+          [
+            0,
+            1023
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 3,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.3,
+      "validation": {
+        "roc_auc": 0.7514996608069056,
+        "average_precision": 0.5013544110867276,
+        "f1": 0.48226097414311486,
+        "precision": 0.3482414242292662,
+        "recall": 0.7839687194525904,
+        "brier": 0.18542353840675627,
+        "confusion_matrix": [
+          [
+            1976,
+            1501
+          ],
+          [
+            221,
+            802
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 3,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.4,
+      "validation": {
+        "roc_auc": 0.7514996608069056,
+        "average_precision": 0.5013544110867276,
+        "f1": 0.48226097414311486,
+        "precision": 0.3482414242292662,
+        "recall": 0.7839687194525904,
+        "brier": 0.18542353840675627,
+        "confusion_matrix": [
+          [
+            1976,
+            1501
+          ],
+          [
+            221,
+            802
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 3,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.5,
+      "validation": {
+        "roc_auc": 0.7514996608069056,
+        "average_precision": 0.5013544110867276,
+        "f1": 0.5239179954441914,
+        "precision": 0.4906143344709898,
+        "recall": 0.5620723362658846,
+        "brier": 0.18542353840675627,
+        "confusion_matrix": [
+          [
+            2880,
+            597
+          ],
+          [
+            448,
+            575
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 3,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.6,
+      "validation": {
+        "roc_auc": 0.7514996608069056,
+        "average_precision": 0.5013544110867276,
+        "f1": 0.5246085011185683,
+        "precision": 0.6130718954248366,
+        "recall": 0.458455522971652,
+        "brier": 0.18542353840675627,
+        "confusion_matrix": [
+          [
+            3181,
+            296
+          ],
+          [
+            554,
+            469
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 3,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.7,
+      "validation": {
+        "roc_auc": 0.7514996608069056,
+        "average_precision": 0.5013544110867276,
+        "f1": 0.5177664974619289,
+        "precision": 0.612,
+        "recall": 0.44868035190615835,
+        "brier": 0.18542353840675627,
+        "confusion_matrix": [
+          [
+            3186,
+            291
+          ],
+          [
+            564,
+            459
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 3,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.8,
+      "validation": {
+        "roc_auc": 0.7514996608069056,
+        "average_precision": 0.5013544110867276,
+        "f1": 0.4465622872702519,
+        "precision": 0.7354260089686099,
+        "recall": 0.3206256109481916,
+        "brier": 0.18542353840675627,
+        "confusion_matrix": [
+          [
+            3359,
+            118
+          ],
+          [
+            695,
+            328
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 3,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.9,
+      "validation": {
+        "roc_auc": 0.7514996608069056,
+        "average_precision": 0.5013544110867276,
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "brier": 0.18542353840675627,
+        "confusion_matrix": [
+          [
+            3477,
+            0
+          ],
+          [
+            1023,
+            0
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 5,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.1,
+      "validation": {
+        "roc_auc": 0.7651112421214566,
+        "average_precision": 0.5394416968485721,
+        "f1": 0.3704508419337317,
+        "precision": 0.22733333333333333,
+        "recall": 1.0,
+        "brier": 0.18263556521643023,
+        "confusion_matrix": [
+          [
+            0,
+            3477
+          ],
+          [
+            0,
+            1023
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 5,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.2,
+      "validation": {
+        "roc_auc": 0.7651112421214566,
+        "average_precision": 0.5394416968485721,
+        "f1": 0.37030280919372494,
+        "precision": 0.22762951334379905,
+        "recall": 0.9921798631476051,
+        "brier": 0.18263556521643023,
+        "confusion_matrix": [
+          [
+            33,
+            3444
+          ],
+          [
+            8,
+            1015
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 5,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.3,
+      "validation": {
+        "roc_auc": 0.7651112421214566,
+        "average_precision": 0.5394416968485721,
+        "f1": 0.4574551131928181,
+        "precision": 0.31170212765957445,
+        "recall": 0.8592375366568915,
+        "brier": 0.18263556521643023,
+        "confusion_matrix": [
+          [
+            1536,
+            1941
+          ],
+          [
+            144,
+            879
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 5,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.4,
+      "validation": {
+        "roc_auc": 0.7651112421214566,
+        "average_precision": 0.5394416968485721,
+        "f1": 0.4829647340107591,
+        "precision": 0.34782608695652173,
+        "recall": 0.7898338220918866,
+        "brier": 0.18263556521643023,
+        "confusion_matrix": [
+          [
+            1962,
+            1515
+          ],
+          [
+            215,
+            808
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 5,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.5,
+      "validation": {
+        "roc_auc": 0.7651112421214566,
+        "average_precision": 0.5394416968485721,
+        "f1": 0.5408577878103837,
+        "precision": 0.50251677852349,
+        "recall": 0.5855327468230694,
+        "brier": 0.18263556521643023,
+        "confusion_matrix": [
+          [
+            2884,
+            593
+          ],
+          [
+            424,
+            599
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 5,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.6,
+      "validation": {
+        "roc_auc": 0.7651112421214566,
+        "average_precision": 0.5394416968485721,
+        "f1": 0.5244103126714207,
+        "precision": 0.5975,
+        "recall": 0.46725317693059626,
+        "brier": 0.18263556521643023,
+        "confusion_matrix": [
+          [
+            3155,
+            322
+          ],
+          [
+            545,
+            478
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 5,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.7,
+      "validation": {
+        "roc_auc": 0.7651112421214566,
+        "average_precision": 0.5394416968485721,
+        "f1": 0.5008860011813349,
+        "precision": 0.6328358208955224,
+        "recall": 0.4144672531769306,
+        "brier": 0.18263556521643023,
+        "confusion_matrix": [
+          [
+            3231,
+            246
+          ],
+          [
+            599,
+            424
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 5,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.8,
+      "validation": {
+        "roc_auc": 0.7651112421214566,
+        "average_precision": 0.5394416968485721,
+        "f1": 0.47112264763140815,
+        "precision": 0.7007722007722008,
+        "recall": 0.3548387096774194,
+        "brier": 0.18263556521643023,
+        "confusion_matrix": [
+          [
+            3322,
+            155
+          ],
+          [
+            660,
+            363
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 5,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.9,
+      "validation": {
+        "roc_auc": 0.7651112421214566,
+        "average_precision": 0.5394416968485721,
+        "f1": 0.22934232715008432,
+        "precision": 0.8343558282208589,
+        "recall": 0.13294232649071358,
+        "brier": 0.18263556521643023,
+        "confusion_matrix": [
+          [
+            3450,
+            27
+          ],
+          [
+            887,
+            136
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 8,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.1,
+      "validation": {
+        "roc_auc": 0.7556214262078604,
+        "average_precision": 0.542260375489306,
+        "f1": 0.36865505742867727,
+        "precision": 0.22742857142857142,
+        "recall": 0.9726295210166178,
+        "brier": 0.18551397487908905,
+        "confusion_matrix": [
+          [
+            97,
+            3380
+          ],
+          [
+            28,
+            995
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 8,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.2,
+      "validation": {
+        "roc_auc": 0.7556214262078604,
+        "average_precision": 0.542260375489306,
+        "f1": 0.4162550516389762,
+        "precision": 0.27018361993587875,
+        "recall": 0.906158357771261,
+        "brier": 0.18551397487908905,
+        "confusion_matrix": [
+          [
+            973,
+            2504
+          ],
+          [
+            96,
+            927
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 8,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.3,
+      "validation": {
+        "roc_auc": 0.7556214262078604,
+        "average_precision": 0.542260375489306,
+        "f1": 0.4512794003618506,
+        "precision": 0.3067463106113844,
+        "recall": 0.8533724340175953,
+        "brier": 0.18551397487908905,
+        "confusion_matrix": [
+          [
+            1504,
+            1973
+          ],
+          [
+            150,
+            873
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 8,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.4,
+      "validation": {
+        "roc_auc": 0.7556214262078604,
+        "average_precision": 0.542260375489306,
+        "f1": 0.47927927927927927,
+        "precision": 0.3459037711313394,
+        "recall": 0.7800586510263929,
+        "brier": 0.18551397487908905,
+        "confusion_matrix": [
+          [
+            1968,
+            1509
+          ],
+          [
+            225,
+            798
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 8,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.5,
+      "validation": {
+        "roc_auc": 0.7556214262078604,
+        "average_precision": 0.542260375489306,
+        "f1": 0.5178813942960616,
+        "precision": 0.4822934232715008,
+        "recall": 0.5591397849462365,
+        "brier": 0.18551397487908905,
+        "confusion_matrix": [
+          [
+            2863,
+            614
+          ],
+          [
+            451,
+            572
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 8,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.6,
+      "validation": {
+        "roc_auc": 0.7556214262078604,
+        "average_precision": 0.542260375489306,
+        "f1": 0.5208970438328236,
+        "precision": 0.54419595314164,
+        "recall": 0.4995112414467253,
+        "brier": 0.18551397487908905,
+        "confusion_matrix": [
+          [
+            3049,
+            428
+          ],
+          [
+            512,
+            511
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 8,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.7,
+      "validation": {
+        "roc_auc": 0.7556214262078604,
+        "average_precision": 0.542260375489306,
+        "f1": 0.4991662034463591,
+        "precision": 0.5786082474226805,
+        "recall": 0.4389051808406647,
+        "brier": 0.18551397487908905,
+        "confusion_matrix": [
+          [
+            3150,
+            327
+          ],
+          [
+            574,
+            449
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 8,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.8,
+      "validation": {
+        "roc_auc": 0.7556214262078604,
+        "average_precision": 0.542260375489306,
+        "f1": 0.45478723404255317,
+        "precision": 0.7110187110187111,
+        "recall": 0.3343108504398827,
+        "brier": 0.18551397487908905,
+        "confusion_matrix": [
+          [
+            3338,
+            139
+          ],
+          [
+            681,
+            342
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 8,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.9,
+      "validation": {
+        "roc_auc": 0.7556214262078604,
+        "average_precision": 0.542260375489306,
+        "f1": 0.21106382978723404,
+        "precision": 0.8157894736842105,
+        "recall": 0.12121212121212122,
+        "brier": 0.18551397487908905,
+        "confusion_matrix": [
+          [
+            3449,
+            28
+          ],
+          [
+            899,
+            124
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 12,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.1,
+      "validation": {
+        "roc_auc": 0.7460975925865012,
+        "average_precision": 0.5283493257068044,
+        "f1": 0.39408456571547595,
+        "precision": 0.25039703546850184,
+        "recall": 0.9247311827956989,
+        "brier": 0.19118127229983442,
+        "confusion_matrix": [
+          [
+            645,
+            2832
+          ],
+          [
+            77,
+            946
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 12,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.2,
+      "validation": {
+        "roc_auc": 0.7460975925865012,
+        "average_precision": 0.5283493257068044,
+        "f1": 0.421421889616464,
+        "precision": 0.2769750999077774,
+        "recall": 0.8807429130009775,
+        "brier": 0.19118127229983442,
+        "confusion_matrix": [
+          [
+            1125,
+            2352
+          ],
+          [
+            122,
+            901
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 12,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.3,
+      "validation": {
+        "roc_auc": 0.7460975925865012,
+        "average_precision": 0.5283493257068044,
+        "f1": 0.4567935537649347,
+        "precision": 0.3190993788819876,
+        "recall": 0.8035190615835777,
+        "brier": 0.19118127229983442,
+        "confusion_matrix": [
+          [
+            1723,
+            1754
+          ],
+          [
+            201,
+            822
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 12,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.4,
+      "validation": {
+        "roc_auc": 0.7460975925865012,
+        "average_precision": 0.5283493257068044,
+        "f1": 0.4862565445026178,
+        "precision": 0.36546974913920316,
+        "recall": 0.7262952101661779,
+        "brier": 0.19118127229983442,
+        "confusion_matrix": [
+          [
+            2187,
+            1290
+          ],
+          [
+            280,
+            743
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 12,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.5,
+      "validation": {
+        "roc_auc": 0.7460975925865012,
+        "average_precision": 0.5283493257068044,
+        "f1": 0.4980694980694981,
+        "precision": 0.41161455009572434,
+        "recall": 0.6304985337243402,
+        "brier": 0.19118127229983442,
+        "confusion_matrix": [
+          [
+            2555,
+            922
+          ],
+          [
+            378,
+            645
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 12,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.6,
+      "validation": {
+        "roc_auc": 0.7460975925865012,
+        "average_precision": 0.5283493257068044,
+        "f1": 0.5147198480531814,
+        "precision": 0.5004616805170822,
+        "recall": 0.5298142717497556,
+        "brier": 0.19118127229983442,
+        "confusion_matrix": [
+          [
+            2936,
+            541
+          ],
+          [
+            481,
+            542
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 12,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.7,
+      "validation": {
+        "roc_auc": 0.7460975925865012,
+        "average_precision": 0.5283493257068044,
+        "f1": 0.5120087336244541,
+        "precision": 0.5797280593325093,
+        "recall": 0.458455522971652,
+        "brier": 0.19118127229983442,
+        "confusion_matrix": [
+          [
+            3137,
+            340
+          ],
+          [
+            554,
+            469
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 12,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.8,
+      "validation": {
+        "roc_auc": 0.7460975925865012,
+        "average_precision": 0.5283493257068044,
+        "f1": 0.42857142857142855,
+        "precision": 0.6898047722342733,
+        "recall": 0.31085043988269795,
+        "brier": 0.19118127229983442,
+        "confusion_matrix": [
+          [
+            3334,
+            143
+          ],
+          [
+            705,
+            318
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "tree",
+      "parameters": {
+        "max_depth": 12,
+        "min_samples_leaf": 50
+      },
+      "threshold": 0.9,
+      "validation": {
+        "roc_auc": 0.7460975925865012,
+        "average_precision": 0.5283493257068044,
+        "f1": 0.2591093117408907,
+        "precision": 0.7547169811320755,
+        "recall": 0.15640273704789834,
+        "brier": 0.19118127229983442,
+        "confusion_matrix": [
+          [
+            3425,
+            52
+          ],
+          [
+            863,
+            160
+          ]
+        ]
+      },
+      "warnings": []
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.1,
+      "validation": {
+        "roc_auc": 0.7732939065288977,
+        "average_precision": 0.5583251780291643,
+        "f1": 0.3753698224852071,
+        "precision": 0.2314709236031927,
+        "recall": 0.9921798631476051,
+        "brier": 0.18458136844697415,
+        "confusion_matrix": [
+          [
+            107,
+            3370
+          ],
+          [
+            8,
+            1015
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.2,
+      "validation": {
+        "roc_auc": 0.7732939065288977,
+        "average_precision": 0.5583251780291643,
+        "f1": 0.3976465814566849,
+        "precision": 0.25089605734767023,
+        "recall": 0.9579667644183774,
+        "brier": 0.18458136844697415,
+        "confusion_matrix": [
+          [
+            551,
+            2926
+          ],
+          [
+            43,
+            980
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.3,
+      "validation": {
+        "roc_auc": 0.7732939065288977,
+        "average_precision": 0.5583251780291643,
+        "f1": 0.43902439024390244,
+        "precision": 0.2915330339961514,
+        "recall": 0.8885630498533724,
+        "brier": 0.18458136844697415,
+        "confusion_matrix": [
+          [
+            1268,
+            2209
+          ],
+          [
+            114,
+            909
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.4,
+      "validation": {
+        "roc_auc": 0.7732939065288977,
+        "average_precision": 0.5583251780291643,
+        "f1": 0.4933920704845815,
+        "precision": 0.3638051044083527,
+        "recall": 0.7663734115347018,
+        "brier": 0.18458136844697415,
+        "confusion_matrix": [
+          [
+            2106,
+            1371
+          ],
+          [
+            239,
+            784
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.5,
+      "validation": {
+        "roc_auc": 0.7732939065288977,
+        "average_precision": 0.5583251780291643,
+        "f1": 0.5381426202321725,
+        "precision": 0.46724262059035276,
+        "recall": 0.6344086021505376,
+        "brier": 0.18458136844697415,
+        "confusion_matrix": [
+          [
+            2737,
+            740
+          ],
+          [
+            374,
+            649
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.6,
+      "validation": {
+        "roc_auc": 0.7732939065288977,
+        "average_precision": 0.5583251780291643,
+        "f1": 0.5577492596248766,
+        "precision": 0.5633100697906281,
+        "recall": 0.552297165200391,
+        "brier": 0.18458136844697415,
+        "confusion_matrix": [
+          [
+            3039,
+            438
+          ],
+          [
+            458,
+            565
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.7,
+      "validation": {
+        "roc_auc": 0.7732939065288977,
+        "average_precision": 0.5583251780291643,
+        "f1": 0.5179190751445086,
+        "precision": 0.6336633663366337,
+        "recall": 0.43792766373411535,
+        "brier": 0.18458136844697415,
+        "confusion_matrix": [
+          [
+            3218,
+            259
+          ],
+          [
+            575,
+            448
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.8,
+      "validation": {
+        "roc_auc": 0.7732939065288977,
+        "average_precision": 0.5583251780291643,
+        "f1": 0.4496330887258172,
+        "precision": 0.707983193277311,
+        "recall": 0.32942326490713586,
+        "brier": 0.18458136844697415,
+        "confusion_matrix": [
+          [
+            3338,
+            139
+          ],
+          [
+            686,
+            337
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.9,
+      "validation": {
+        "roc_auc": 0.7732939065288977,
+        "average_precision": 0.5583251780291643,
+        "f1": 0.16884247171453437,
+        "precision": 0.7698412698412699,
+        "recall": 0.09481915933528837,
+        "brier": 0.18458136844697415,
+        "confusion_matrix": [
+          [
+            3448,
+            29
+          ],
+          [
+            926,
+            97
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          64,
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.1,
+      "validation": {
+        "roc_auc": 0.7767184494897484,
+        "average_precision": 0.5769770593889325,
+        "f1": 0.3886829268292683,
+        "precision": 0.24280838615309605,
+        "recall": 0.9736070381231672,
+        "brier": 0.17600799701127562,
+        "confusion_matrix": [
+          [
+            371,
+            3106
+          ],
+          [
+            27,
+            996
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          64,
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.2,
+      "validation": {
+        "roc_auc": 0.7767184494897484,
+        "average_precision": 0.5769770593889325,
+        "f1": 0.42065602836879434,
+        "precision": 0.27199770707939236,
+        "recall": 0.927663734115347,
+        "brier": 0.17600799701127562,
+        "confusion_matrix": [
+          [
+            937,
+            2540
+          ],
+          [
+            74,
+            949
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          64,
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.3,
+      "validation": {
+        "roc_auc": 0.7767184494897484,
+        "average_precision": 0.5769770593889325,
+        "f1": 0.46382189239332094,
+        "precision": 0.3181818181818182,
+        "recall": 0.855327468230694,
+        "brier": 0.17600799701127562,
+        "confusion_matrix": [
+          [
+            1602,
+            1875
+          ],
+          [
+            148,
+            875
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          64,
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.4,
+      "validation": {
+        "roc_auc": 0.7767184494897484,
+        "average_precision": 0.5769770593889325,
+        "f1": 0.5058548009367682,
+        "precision": 0.38453713123092575,
+        "recall": 0.7390029325513197,
+        "brier": 0.17600799701127562,
+        "confusion_matrix": [
+          [
+            2267,
+            1210
+          ],
+          [
+            267,
+            756
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          64,
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.5,
+      "validation": {
+        "roc_auc": 0.7767184494897484,
+        "average_precision": 0.5769770593889325,
+        "f1": 0.546448087431694,
+        "precision": 0.47935103244837757,
+        "recall": 0.635386119257087,
+        "brier": 0.17600799701127562,
+        "confusion_matrix": [
+          [
+            2771,
+            706
+          ],
+          [
+            373,
+            650
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          64,
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.6,
+      "validation": {
+        "roc_auc": 0.7767184494897484,
+        "average_precision": 0.5769770593889325,
+        "f1": 0.5403788634097707,
+        "precision": 0.5513733468972533,
+        "recall": 0.5298142717497556,
+        "brier": 0.17600799701127562,
+        "confusion_matrix": [
+          [
+            3036,
+            441
+          ],
+          [
+            481,
+            542
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          64,
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.7,
+      "validation": {
+        "roc_auc": 0.7767184494897484,
+        "average_precision": 0.5769770593889325,
+        "f1": 0.5250431778929189,
+        "precision": 0.6386554621848739,
+        "recall": 0.44574780058651026,
+        "brier": 0.17600799701127562,
+        "confusion_matrix": [
+          [
+            3219,
+            258
+          ],
+          [
+            567,
+            456
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          64,
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.8,
+      "validation": {
+        "roc_auc": 0.7767184494897484,
+        "average_precision": 0.5769770593889325,
+        "f1": 0.45515394912985274,
+        "precision": 0.721868365180467,
+        "recall": 0.33235581622678395,
+        "brier": 0.17600799701127562,
+        "confusion_matrix": [
+          [
+            3346,
+            131
+          ],
+          [
+            683,
+            340
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    },
+    {
+      "family": "mlp",
+      "parameters": {
+        "architecture": [
+          64,
+          32
+        ],
+        "epochs": 50
+      },
+      "threshold": 0.9,
+      "validation": {
+        "roc_auc": 0.7767184494897484,
+        "average_precision": 0.5769770593889325,
+        "f1": 0.24648469809760132,
+        "precision": 0.8010752688172043,
+        "recall": 0.14565004887585534,
+        "brier": 0.17600799701127562,
+        "confusion_matrix": [
+          [
+            3440,
+            37
+          ],
+          [
+            874,
+            149
+          ]
+        ]
+      },
+      "warnings": [
+        "Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet."
+      ]
+    }
+  ]
+}
