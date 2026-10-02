@@ -25,6 +25,10 @@ python -m jupyter lab notebooks/credit_risk_classification.ipynb
 
 Run the notebook from the repository root or the notebooks directory. Training can be computationally expensive. Dependency versions are currently unpinned; an exact validated training environment is still needed.
 
+## New neural experiment and error analysis
+
+A [fixed-budget MLP run](docs/NEURAL_RESULTS.md) uses the same split as tree-v1 and records AUC **0.7443**, AP **0.2129**, and F1 **0.2887**. Both models have poor probability calibration; confusion counts and calibration bins are published. This is a new separate experiment with historical test-exposure limits, not the old TensorFlow model.
+
 ## Current methodological limitations
 
 A separate [tree experiment protocol](docs/TREE_PROTOCOL.md) now provides train-only preprocessing, validation-based selection, a dummy baseline and run metadata. Its protocol checks pass and a [recorded Home Credit run](docs/HOMECREDIT_RESULTS.md) achieves ROC AUC **0.7227**, average precision **0.1972**, and F1 **0.2694**. This is a separate raw-feature tree experiment, with prior dataset/test exposure disclosed; it does not reproduce the historical neural-network comparison.

@@ -84,7 +84,7 @@ def run(data, output, seed=42, *, architectures=((32,), (64, 32)), epochs=30):
               "dataset_sha256": hashlib.sha256(Path(data).read_bytes()).hexdigest(),
               "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               "tree_script_sha256": hashlib.sha256(Path(__file__).with_name("train_tree.py").read_bytes()).hexdigest(),
-              "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+              "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=Path(__file__).resolve().parents[1], text=True).strip(),
               "versions": {p: importlib.metadata.version(p) for p in
                            ("numpy", "pandas", "scikit-learn", "joblib", "scipy", "threadpoolctl")},
               "split_sizes": {"train": len(train), "validation": len(validation), "test": len(test)},
