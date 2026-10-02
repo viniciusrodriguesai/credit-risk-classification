@@ -10,7 +10,7 @@ The notebook covers exploratory analysis, missing values, feature engineering, s
 
 The saved notebook and separate report describe different tree experiments. The current saved notebook records a tree threshold of 0.70, AUC 0.702620 and F1 0.274071. The separate report uses threshold 0.75, AUC 0.6658 and F1 0.2601. These cannot be presented as one verified run.
 
-See [results provenance](docs/RESULTS_PROVENANCE.md) before citing any metric. Saved outputs are historical evidence; the full training was not rerun during the portfolio audit. The neural network has higher saved AUC and recall, while the tree has higher saved F1 at its selected operating threshold. No single model dominates every metric.
+See [results provenance](docs/RESULTS_PROVENANCE.md) before citing any metric. Saved outputs are historical evidence; later separately documented tree, MLP and UCI runs do not reproduce that historical notebook comparison. The neural network has higher saved AUC and recall, while the tree has higher saved F1 at its selected operating threshold. No single model dominates every metric.
 
 ## Reproduce the notebook
 
@@ -28,6 +28,10 @@ Run the notebook from the repository root or the notebooks directory. Training c
 ## New neural experiment and error analysis
 
 A [fixed-budget MLP run](docs/NEURAL_RESULTS.md) uses the same split as tree-v1 and records AUC **0.7443**, AP **0.2129**, and F1 **0.2887**. Both models have poor probability calibration; confusion counts and calibration bins are published. This is a new separate experiment with historical test-exposure limits, not the old TensorFlow model.
+
+## New-cohort replication with a protected final split
+
+A [preregistered UCI replication](docs/UCI_RESULTS.md) uses 30,000 independently sourced credit-client outcomes, train-only preprocessing, validation-frozen logistic/tree/MLP selection and one held-out test pass. The validation-selected MLP scores AUC **0.7757**, AP **0.5241**, F1 **0.5334** on 4,377 reserved records; paired bootstrap intervals and poor calibration are documented. This supplies new-cohort evidence with new models; it does not erase old Home Credit test exposure or validate those fixed models across domains.
 
 ## Current methodological limitations
 
